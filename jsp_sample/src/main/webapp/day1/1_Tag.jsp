@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div>Hello JSP</div>
-	<div>안녕하세요</div>
+	<div>안녕하세요</div>  
 	<!-- ctrl + shift + / -->
 	<!-- shift + enter -->
 	
