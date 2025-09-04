@@ -15,7 +15,8 @@
 		String userId = request.getParameter("userId");
 		String contents = request.getParameter("contents");
 		
-		String query = "INSERT INTO TBL_BOARD VALUES (B_SEQ.NEXTVAL, '" + title + "', '" + contents + "', '" + userId + "')";
+		String query = "INSERT INTO TBL_BOARD VALUES (B_SEQ.NEXTVAL, '" + title + "', '" + contents + "', '" + userId + "', 0, 0, '" + kind + "', SYSDATE, SYSDATE)";
+		out.println(query);
 	%>
 </body>
 </html>
