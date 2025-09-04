@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-asdf
+	<%@ include file="../db/db.jsp" %>
+	
+	<%
+		String kind = request.getParameter("kind");
+		String title = request.getParameter("title");
+		String userId = request.getParameter("userId");
+		String contents = request.getParameter("contents");
+	%>
 </body>
 </html>
