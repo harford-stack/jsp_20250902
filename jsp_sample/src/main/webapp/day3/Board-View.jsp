@@ -66,6 +66,7 @@
 				<div>
 					<!-- <input type="submit" value="삭제"> -->
 					<input type="button" value="삭제" onclick="fnRemove()">
+					<input type="button" value="수정" onclick="fnEdit()">
 				</div>
 			</form>
 		<%
@@ -85,6 +86,13 @@
 		if(!confirm("정말 삭제하시겠습니까?")) {
 			return;
 		}
+		board.submit();
+	}
+	
+	function fnEdit() {
+		let board = document.board;
+		board.action = "Board-Edit.jsp"; // form 태그의 액션 값 변경 가능
+		console.log(board.action);
 		board.submit();
 	}
 
