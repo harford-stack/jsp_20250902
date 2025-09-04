@@ -33,8 +33,17 @@
 </style>
 </head>
 <body>
+	<%@ include file="../db/db.jsp" %>
 
 	<div id="container">
+	<%
+		ResultSet rs = null;
+		String boardNo = request.getParameter("boardNo");
+		String query = "SELECT B.*, TO_CHAR(CDATETIME, 'YYYY-MM-DD') "
+					 + "CTIME FROM TBL_BOARD B WHERE BOARDNO = " + boardNo;
+		rs = stmt.executeQuery(query);
+		rs.next();
+	%>
 		<form name="board" action="Board-Add-Result.jsp">
 			<table>
 				<tr>
@@ -71,6 +80,7 @@
 			</div>
 		</form>
 	</div>
+
 
 </body>
 </html>
