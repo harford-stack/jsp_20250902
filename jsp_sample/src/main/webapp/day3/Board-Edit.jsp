@@ -43,40 +43,42 @@
 					 + "CTIME FROM TBL_BOARD B WHERE BOARDNO = " + boardNo;
 		rs = stmt.executeQuery(query);
 		rs.next();
+		String kind = rs.getString("KIND");
 	%>
-		<form name="board" action="Board-Add-Result.jsp">
+		<form name="board" action="Board-Edit-Result.jsp">
+			<input name="boardNo" value="<%= rs.getString("BOARDNO") %>" hidden>
 			<table>
 				<tr>
 					<th>게시글 종류</th>
 					<td>
 						<!-- 1=>공지사항 2=>자유 3=>문의 -->
 						<select name="kind">
-							<option value="1">공지사항</option>
-							<option value="2">자유게시판</option>
-							<option value="3">문의게시판</option>
+							<option value="1" <%= "1".equals(kind) ? "selected" : "" %>>공지사항</option>
+							<option value="2" <%= "2".equals(kind) ? "selected" : "" %>>자유게시판</option>
+							<option value="3" <%= "3".equals(kind) ? "selected" : "" %>>문의게시판</option>
 						</select>
 					</td>
 				</tr>
 		        <tr>
 		            <th>제목</th>
-		            <td><input type="text" name="title" class="input-txt"></td>
+		            <td><input type="text" name="title" class="input-txt" value="<%= rs.getString("TITLE") %>"></td>
 		        </tr>
 		        <tr>
 		            <th>작성자</th>
-		            <td><input type="text" name="userId" class="input-txt"></td>
+		            <td><input type="text" name="userId" class="input-txt" value="<%= rs.getString("USERID") %>"></td>
 		        </tr>
 
 		        <tr>
 		            <th>내용</th>
 		            <td id="contents">
-		            	<textarea name="contents" rows="20" cols="68"></textarea>
+		            	<textarea name="contents" rows="20" cols="68"><%= rs.getString("TITLE") %></textarea>
 		            </td>
 		        </tr>
 			</table>
 			
 			<div>
 				<!-- <input type="submit" value="삭제"> -->
-				<input type="button" value="작성" onclick="fnAdd()">
+				<input type="button" value="수정" onclick="fnEdit()">
 			</div>
 		</form>
 	</div>
@@ -86,8 +88,8 @@
 </html>
 
 <script>
-
-	function fnAdd() {
+	
+	function fnEdit() {
 		let form = document.board;
 		form.submit();
 	}

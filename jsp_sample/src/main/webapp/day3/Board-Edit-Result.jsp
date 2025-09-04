@@ -10,22 +10,32 @@
 	<%@ include file="../db/db.jsp" %>
 	
 	<%
+		String boardNo = request.getParameter("boardNo");
 		String kind = request.getParameter("kind");
 		String title = request.getParameter("title");
 		String userId = request.getParameter("userId");
 		String contents = request.getParameter("contents");
 		
-		String query = "INSERT INTO TBL_BOARD VALUES (B_SEQ.NEXTVAL, '" + title + "', '" + contents + "', '" + userId + "', 0, 0, '" + kind + "', SYSDATE, SYSDATE)";
+		String query = "UPDATE TBL_BOARD SET "
+					 + "KIND = '" + kind + "', "
+					 + "TITLE = '" + title + "', "
+					 + "USERID = '" + userId + "', "
+					 + "CONTENTS = '" + contents + "' "
+					 + "WHERE BOARDNO = '" + boardNo + "'";
 		out.println(query);
+		
 		int result = stmt.executeUpdate(query);
 		if(result > 0) {
-			out.println("작성되었습니다");
+			out.println("수정되었습니다");
 	%>
-		<a href="Board-List.jsp"><button>목록으로</button></a>
+		<div>
+			<a href="Board-List.jsp"><button>목록으로</button></a>
+		</div>
 	<%
 		} else {
 			out.println("오류가 발생했습니다");
-		} 
+		}
+		
 	%>
 </body>
 </html>
