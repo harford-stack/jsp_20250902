@@ -10,7 +10,7 @@
 </head>
 <body>
 <%
-	Connection conn;
+	Connection conn = null;
 	Statement stmt = null;
 	try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
