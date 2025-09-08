@@ -53,7 +53,7 @@
 	function fnCheck(){
 		let form = document.form;
 		let empNo = form.empNo.value;
-		window.open(`Emp-Check.jsp?empNo=\${empNo}`, "check", "width=500, height=500");
+		window.open(`EMP-Check.jsp?empNo=\${empNo}`, "check", "width=500, height=500");
 	}
 	
 	function fnReturn(flg){
